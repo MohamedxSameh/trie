@@ -2,50 +2,93 @@
 #include<iostream>
 using namespace std;
 
-//Trie::Trie()
-
-//*****************
-//INSERT METHOD
-//*****************
-
 void Trie::insert(string word)
 {
     Trie::Node * curr = root;
     for(int i = 0 ; i<word.length(); i++)
     {
         char chr = word[i];
-        int index = chr - 'a';
-        if (curr->children[index] == 0)
+        int x = curr->e;
+        if(x==0)
+        {
+            curr->children[x]=new Trie::Node(chr);
+            curr->e++;
+            curr= curr->children[x];
+        }else
+        {
+            for(int j = 0 ; j< x ; j++)
             {
-                curr->children[index]=new Trie::Node(chr);
-                curr = curr->children[index];
-                if(i == (word.length() -1) )
-                    {
-                        curr->isWord = true;
-//                        cout<<"word is added"<<endl;
-                    }
+                if(chr == curr->children[j]->c)
+                {
+                    curr=curr->children[j];
+                    break;
+                }else if(j == (x-1) )
+                {
+                    curr->children[x]=new Trie::Node(chr);
+                    curr->e++;
+                    curr= curr->children[x];
+                }
             };
+        };
     }
+    curr->isWord = true;
+    if(search(word)) curr->count++;
 }
-
-//*****************
-//INSERT METHOD
-//*****************
-
-void Trie::search(string word)
+bool Trie::search(string word)
 {
     Trie::Node * curr = root;
     for(int i = 0 ; i< word.length(); i++)
     {
         char ch = word[i];
-        int index = ch - 'a';
-        if (curr->children[index] == 0 || curr->children[index]->c != ch)
+        for(int j = 0 ; j < curr->e ; j++)
         {
-            cout<<word<<" is not found in trie"<<endl;
-            return;
+            if (ch == curr->children[j]->c)
+            {
+                curr=curr->children[j];
+                break;
+            }
+            if(j == (curr->e)-1 )
+            {
+                return false;
+            }
         }
-
-        curr=curr->children[index];
     }
-    cout<<word <<" is found in trie"<<endl;
-   }
+    return true;
+}
+int Trie::findCount(string word)
+{
+    Trie::Node * curr = root;
+    int counter=0;
+    for(int i = 0 ; i< word.length() ; i++)
+    {
+        char ch = word[i];
+        int x = curr->e;
+        for(int j = 0; j<x;j++)
+        {
+            if(ch == curr->children[j]->c)
+            {
+                curr= curr->children[j];
+                break;
+            }
+            if(j == x-1)return 0;
+        }
+    };
+
+    return fin(curr,counter);
+}
+int Trie :: fin(Trie::Node * curr,int counter)
+{
+    int x = counter;
+    if(curr->isWord)
+    {
+        x+=curr->count;
+        counter=x;
+    }
+    if(curr->e == 0) return x;
+    for(int i = 0 ; i< curr->e ; i ++)
+    {
+        x = fin(curr->children[i],x);
+
+    }
+    return x;
+};

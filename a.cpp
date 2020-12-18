@@ -19,12 +19,12 @@ public:
 };
 
 int main(){
-	cout<<"UNTITLED X MOHAMED"<<endl;
-	int index =  'e';
-	int y =  index - 'a';
-	string c = "mohamed";
-	bool s = 0;
-	int x [26]= {0};
+	// cout<<"UNTITLED X MOHAMED"<<endl;
+	// int index =  'e';
+	// int y =  index - 'a';
+	// string c = "mohamed";
+	// bool s = 0;
+	// int x [26]= {0};
 	// for(int i = 0 ; i < 26 ; i++){
 	// 	cout<<x[i]<<endl;
 	// }
@@ -40,7 +40,29 @@ int main(){
 	// 	cout<<i << " : " <<ar[i]<<endl;
 	// }
 
-cout<<'d'-'a'<<endl;
-cout<<'o'-'a'<<endl;
-cout<<'g'-'a'<<endl;
+// cout<<'d'-'a'<<endl;
+// cout<<'o'-'a'<<endl;
+// cout<<'g'-'a'<<endl;
+
+// char ct = 'o';
+
+// string st = "mohamed";
+
+// int i = 0;
+// while ( i < 7 )
+// {
+
+
+// 	if(st[i]=='e')
+// 	{
+// 		break;
+// 	}
+// 	cout<<st[i];
+// 	i++;
+// };
+
+int q, w ;
+cin>>q;
+cin>>w;
+cout<<q<<endl<<w;
 }

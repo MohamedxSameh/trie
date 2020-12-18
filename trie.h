@@ -12,25 +12,19 @@ class Trie
         public:
             char c;
             bool isWord;
+            int e = 0 ;
+            int count=0;
             Node *children[26]={0};
             Node(char ch)
             :c(ch) ,isWord(false)
             {};
-
         };
-
     public:
-//        Trie();
-        //INSERT METHOD
         void insert (string word);
-        //SEARCH METHOD
-        void search (string word);
-        //SEARCH QUERY
-        int sq (string word);
-        //ROOT NODE
+        bool search (string word);
+        int findCount (string word);
+        int fin(Node * p,int counter);
         Node * root = new Node('*');
-
-    protected:
 };
 
 #endif // TRIE_H
