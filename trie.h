@@ -21,9 +21,13 @@ class Trie
         };
     public:
         void insert (string word);
+        void remove (string word);
+        Node* getNode(string word);
+        void display ();
         bool search (string word);
         int findCount (string word);
         int fin(Node * p,int counter);
+        void d(Node* p);
         Node * root = new Node('*');
 };
 
