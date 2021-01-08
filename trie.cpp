@@ -161,11 +161,11 @@ void Trie::display()
     for(int i = 0 ; i<curr->e ; i++)
     {
         string str ="";
-        d(curr->children[i], str);
+        dr(curr->children[i], str);
     }
 }
 // ************
-void Trie:: d(Node* curr, string str)
+void Trie:: dr(Node* curr, string str)
 {
     str += curr->c;
     if(curr->e == 0){

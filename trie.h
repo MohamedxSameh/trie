@@ -28,7 +28,7 @@ class Trie
         bool search (string word);
         int findCount (string word);
         int fcr(Node * p,int counter);
-        void d(Node* p, string str);
+        void dr(Node* p, string str);
         Node * root = new Node('*');
 };
 
