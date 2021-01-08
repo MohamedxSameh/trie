@@ -177,6 +177,6 @@ void Trie:: dr(Node* curr, string str)
     }
     for(int i = 0 ; i<curr->e ; i++)
     {
-        d(curr->children[i], str);
+        dr(curr->children[i], str);
     }
 }
