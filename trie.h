@@ -12,11 +12,12 @@ class Trie
         public:
             char c;
             bool isWord;
+            bool displayed;
             int e = 0 ;
             int count=0;
             Node *children[26]={0};
             Node(char ch)
-            :c(ch) ,isWord(false)
+            :c(ch) ,isWord(false), displayed(false)
             {};
         };
     public:
@@ -26,8 +27,8 @@ class Trie
         void display ();
         bool search (string word);
         int findCount (string word);
-        int fin(Node * p,int counter);
-        void d(Node* p);
+        int fcr(Node * p,int counter);
+        void d(Node* p, string str);
         Node * root = new Node('*');
 };
 

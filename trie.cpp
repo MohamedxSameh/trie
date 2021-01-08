@@ -102,9 +102,23 @@ void Trie::remove (string word){
         cout<<"This word already doesn't exist"<<endl;
         return;
     }
-    Trie::Node * curr = getNode(word);
-    curr->isWord=false;
-    cout<<"Word removed"<<endl;
+    int size = word.length();
+    string str = word;
+    Trie::Node * curr = getNode(str);
+    for ( int i = 1 ; i<=size ; i++)
+    {
+        if(curr->e == 0)
+        {
+            curr =NULL;
+            str = word.substr(0,size-i);
+            curr = getNode(str);
+            curr->e --;
+        }else{
+            curr->isWord=false;
+            return;
+        }
+    }
+    cout<<"------Word removed------"<<endl;
 }
 
 //****************
@@ -115,13 +129,13 @@ int Trie::findCount(string word)
     Trie::Node * curr = getNode(word);
     if(curr==0) return 0;
     int counter=0;
-    return fin(curr,counter);
+    return fcr(curr,counter);
 }
 
 //*******************
 //*RECURSIVE FUNCTION
 //*******************
-int Trie :: fin(Node * curr,int counter)
+int Trie :: fcr(Node * curr,int counter)
 {
     int x = counter;
     if(curr->isWord)
@@ -132,7 +146,7 @@ int Trie :: fin(Node * curr,int counter)
     if(curr->e == 0) return x;
     for(int i = 0 ; i< curr->e ; i ++)
     {
-        x = fin(curr->children[i],x);
+        x = fcr(curr->children[i],x);
 
     }
     return x;
@@ -144,16 +158,25 @@ int Trie :: fin(Node * curr,int counter)
 void Trie::display()
 {
     Trie::Node * curr = root ;
-    d(curr);
-}
-void Trie:: d(Node* curr)
-{
-    if(curr->e == 0) return;
-    for(int i = 0 ; i<curr->e ; i ++)
+    for(int i = 0 ; i<curr->e ; i++)
     {
-        curr=curr->children[i];
-        cout<<curr->c;
-        if(curr->isWord) break;
-        d(curr);
+        string str ="";
+        d(curr->children[i], str);
+    }
+}
+// ************
+void Trie:: d(Node* curr, string str)
+{
+    str += curr->c;
+    if(curr->e == 0){
+        cout<<str<<endl;
+        return;
+    }else if(curr->isWord)
+    {
+        cout<<str<<endl;
+    }
+    for(int i = 0 ; i<curr->e ; i++)
+    {
+        d(curr->children[i], str);
     }
 }
