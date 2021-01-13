@@ -164,7 +164,9 @@ void Trie::display()
         dr(curr->children[i], str);
     }
 }
-// ************
+//*******************
+//*RECURSIVE FUNCTION
+//*******************
 void Trie:: dr(Node* curr, string str)
 {
     str += curr->c;

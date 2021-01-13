@@ -6,19 +6,6 @@ using namespace std;
 
 int main()
 {
-    // Trie t;
-    // t.insert("dog");
-    // t.remove("dog");
-    // t.insert("cat");
-    // t.insert("dogs");
-    // t.insert("doctor");
-    // t.insert("doctors");
-
-    // t.display();
-
-
-    cout<<"untitled"<<endl;
-
     Trie t;
     int n ,q ;
     cin>>n;
@@ -41,5 +28,4 @@ int main()
         cout<<t.findCount(st[i])<<endl;
     }
     return 0;
-
 }
